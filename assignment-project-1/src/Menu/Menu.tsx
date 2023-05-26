@@ -1,13 +1,20 @@
+import { MouseEvent } from "react";
 function Menu() {
+  let menuItems = ["Home", "Categories", "About", "Contact"];
+  // menuItems = [];
+  const handleClick = (event: MouseEvent) => console.log(event);
   return (
-    <div>
-      <ul>
-        <li>Home</li>
-        <li>Categories</li>
-        <li>About</li>
-        <li>Contact</li>
+    <>
+      <h4>Dynamic Menu</h4>
+      {menuItems.length === 0 && <p>No items found in the Menu</p>}
+      <ul className="list-group">
+        {menuItems.map((item, index) => (
+          <li className="list-group-item" key={index} onClick={handleClick}>
+            {item}
+          </li>
+        ))}
       </ul>
-    </div>
+    </>
   );
 }
 
